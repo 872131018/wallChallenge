@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS wall.wallContents
+(
+	postNumber	INT NOT NULL AUTO_INCREMENT,
+	name	VARCHAR(24) NOT NULL,
+	email 	VARCHAR(64) NOT NULL,
+	website VARCHAR(64),
+	comment VARCHAR(512),
+	submittedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(postNumber)
+);
