@@ -1,34 +1,7 @@
-$(document).ready( function()
-{
-	//once the page has finished loading
-	//set up a single action for simplicity
-	$('#postButton').click(function()
-	{
-		checkPost()
-	});
-
-	$('#sortOrder').click(function()
-	{
-		$('#wallContainer').html('');
-		if($('#sortOrder').val() == 'ASC')
-		{
-			$('#sortOrder').val('DESC');
-			fillWall($('#sortOrder').val());
-		}
-		else
-		{
-			$('#sortOrder').val('ASC');
-			fillWall($('#sortOrder').val());
-		}
-	});
-
-	fillWall($('#sortOrder').val());
-});
-
-//this function verifies that the comment contains
-//the information that is required for posting
+//this function verifies that the comment contains the information that is required for posting
 function checkPost()
 {
+	//
 	$('#feedback').html('');
 	var isOk = 'true';
 	$('.required').each(function()
@@ -146,9 +119,19 @@ function postToWall(passedComment)
 	$('#wallContainer').prepend(passedComment);
 }
 
+//primary call to server to retrieve messages for wall
 function fillWall(passedSortOrder)
 {
-	$.get('../PHP/wallDriver.php', {'action': 'getWallContents',
+	//clean the bootstrap switch values from boolean
+	if(passedSortOrder)
+	{
+		passedSortOrder = 'ASC';
+	}
+	else
+	{
+		passedSortOrder = 'DESC';
+	}
+	$.get('../php/wallDriver.php', {'action': 'getWallContents',
 								  	'sortOrder': passedSortOrder
 	  								}, 
 		function(response)
