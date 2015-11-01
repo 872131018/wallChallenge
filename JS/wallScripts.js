@@ -42,7 +42,7 @@ function postComment()
 									  	'email': $('#email').val(),
 									  	'website': $('#website').val(),
 									  	'comment': $('#comment').val()
-		  								}, 
+		  								},
 		function(response)
 		{
 				checkResponse(response);
@@ -133,7 +133,7 @@ function fillWall(passedSortOrder)
 	}
 	$.get('../php/wallDriver.php', {'action': 'getWallContents',
 								  	'sortOrder': passedSortOrder
-	  								}, 
+	  								},
 		function(response)
 		{
 			if(response == 'false')
